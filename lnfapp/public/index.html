@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f8f7f3" />
+    <meta name="description" content="A shared place for our community to reunite lost things with the people who miss them." />
+    <title>Found &amp; Home — Community Lost &amp; Found</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="/" aria-label="Found and Home home">
+        <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M16 27s-10-6.4-10-14a6 6 0 0 1 10-4.4A6 6 0 0 1 26 13c0 7.6-10 14-10 14Z"/><path d="m12.5 16 2.2 2.2 4.8-5"/></svg></span>
+        <span>found<span class="brand-amp">&amp;</span>home</span>
+      </a>
+      <div class="header-community"><span class="community-dot"></span> Your community hub</div>
+      <nav class="header-actions" aria-label="Main navigation">
+        <button class="text-button hidden" id="my-posts-button">My posts</button>
+        <span class="account-email hidden" id="account-email"></span>
+        <button class="button button-dark button-small" id="account-button">Sign in</button>
+        <button class="button button-primary button-small" id="post-button"><span aria-hidden="true">+</span> Post an item</button>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-copy">
+          <div class="eyebrow"><span class="eyebrow-line"></span> A little help goes a long way</div>
+          <h1>Lost something?<br /><span>Let’s bring it home.</span></h1>
+          <p class="hero-subtitle">The shared lost &amp; found for our community. Search what’s been found, or let others know what you’re missing.</p>
+          <div class="hero-actions">
+            <button class="button button-primary" id="hero-search-button">Find an item <span aria-hidden="true">↗</span></button>
+            <button class="button button-outline" id="hero-post-button">I found something <span aria-hidden="true">＋</span></button>
+          </div>
+          <div class="hero-note"><span class="note-avatars"><i>J</i><i>M</i><i>A</i></span><span>Good things find their way back.</span></div>
+        </div>
+        <div class="hero-art" aria-label="Illustration of a key being returned home">
+          <div class="art-sun"></div>
+          <div class="art-blob art-blob-back"></div>
+          <div class="art-blob art-blob-front"></div>
+          <div class="art-card art-card-note"><span class="note-pin">✦</span><b>found it!</b><small>near the library</small></div>
+          <div class="art-card art-card-key"><span class="key-ring"></span><span class="key-stem"></span><span class="key-tooth"></span><span class="key-spark">✦</span></div>
+          <div class="art-card art-card-sticker"><span>✿</span><small>things find<br />their way home</small></div>
+          <div class="art-ground"></div>
+          <span class="art-star star-one">✳</span><span class="art-star star-two">✦</span><span class="art-star star-three">✧</span>
+          <div class="art-caption"><span class="caption-icon">↗</span><span>Small acts. Happy reunions.</span></div>
+        </div>
+      </section>
+
+      <section class="browse-section" id="browse">
+        <div class="section-heading">
+          <div><div class="eyebrow"><span class="eyebrow-line"></span> The community board</div><h2>Let’s find what you’re looking for.</h2></div>
+          <span class="listing-count" id="listing-count">Loading posts…</span>
+        </div>
+
+        <form class="search-panel" id="search-form">
+          <label class="search-field"><span class="field-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 5 5"/></svg></span><span class="sr-only">Search items</span><input id="search-query" type="search" placeholder="Try “blue backpack” or “keys”" /></label>
+          <span class="search-divider"></span>
+          <label class="search-select"><span class="sr-only">Category</span><select id="category-filter"><option value="">All categories</option><option>Electronics</option><option>Keys</option><option>Bags</option><option>Clothing</option><option>Cards &amp; IDs</option><option>Jewelry</option><option>Books</option><option>Other</option></select></label>
+          <label class="search-location"><span class="field-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 10c0 5.2-8 11-8 11S4 15.2 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></svg></span><span class="sr-only">Location</span><input id="location-filter" type="search" placeholder="Any location" /></label>
+          <button class="button button-dark search-submit" type="submit"><span class="desktop-search-label">Search</span><span class="mobile-search-label">Go</span><span aria-hidden="true">↗</span></button>
+        </form>
+
+        <div class="board-toolbar">
+          <div class="filter-tabs" role="tablist" aria-label="Listing type">
+            <button class="filter-tab active" data-kind="" role="tab" aria-selected="true">Everything <span id="all-count"></span></button>
+            <button class="filter-tab" data-kind="lost" role="tab" aria-selected="false"><span class="tab-dot lost-dot"></span>Lost</button>
+            <button class="filter-tab" data-kind="found" role="tab" aria-selected="false"><span class="tab-dot found-dot"></span>Found</button>
+          </div>
+          <button class="text-button clear-filters" id="clear-filters">Clear filters <span aria-hidden="true">×</span></button>
+        </div>
+
+        <div class="listing-grid" id="listing-grid" aria-live="polite"></div>
+      </section>
+      <section class="closing-banner"><div class="closing-icon">♡</div><div><h2>Found something? You could make someone’s day.</h2><p>A quick post might be all it takes to get it back to its owner.</p></div><button class="button button-dark" id="closing-post-button">Share what you found <span aria-hidden="true">↗</span></button></section>
+    </main>
+
+    <footer class="site-footer"><a class="brand footer-brand" href="/"><span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M16 27s-10-6.4-10-14a6 6 0 0 1 10-4.4A6 6 0 0 1 26 13c0 7.6-10 14-10 14Z"/><path d="m12.5 16 2.2 2.2 4.8-5"/></svg></span><span>found<span class="brand-amp">&amp;</span>home</span></a><span>A shared space for the things that matter.</span><span>Made with care for our community <b>♥</b></span></footer>
+
+    <dialog class="modal" id="auth-modal" aria-labelledby="auth-title"><div class="modal-shell auth-shell"><button class="modal-close" data-close="auth-modal" aria-label="Close">×</button><div class="modal-eyebrow">Welcome to the neighborhood</div><h2 id="auth-title">Good to have you here.</h2><p class="modal-intro" id="auth-intro">Sign in to post an item or manage your listings.</p><div class="auth-tabs"><button class="auth-tab active" data-auth-mode="login">Sign in</button><button class="auth-tab" data-auth-mode="register">Create account</button></div><form id="auth-form"><label class="form-label">Email address<input name="email" type="email" autocomplete="email" required placeholder="you@example.com" /></label><label class="form-label">Password<input name="password" type="password" autocomplete="current-password" minlength="10" required placeholder="At least 10 characters" /></label><div class="form-error" id="auth-error" role="alert"></div><button class="button button-primary form-submit" id="auth-submit">Sign in <span aria-hidden="true">↗</span></button></form><p class="fine-print">Your account helps keep community posts thoughtful and accountable.</p></div></dialog>
+
+    <dialog class="modal" id="listing-modal" aria-labelledby="listing-modal-title"><div class="modal-shell listing-shell"><button class="modal-close" data-close="listing-modal" aria-label="Close">×</button><div class="modal-eyebrow" id="listing-modal-eyebrow">A small act of kindness</div><h2 id="listing-modal-title">Share an item</h2><p class="modal-intro">A few details can help it find its way home.</p><form id="listing-form"><input type="hidden" name="id" /><div class="form-row kind-choice"><label class="choice-label"><input type="radio" name="kind" value="found" checked /><span><b>I found this</b><small>Help return it to its owner</small></span></label><label class="choice-label"><input type="radio" name="kind" value="lost" /><span><b>I lost this</b><small>Let the community help</small></span></label></div><label class="form-label">What is it called?<input name="title" required maxlength="90" placeholder="e.g. Navy blue backpack" /></label><div class="form-row"><label class="form-label">Category<select name="category" required><option value="">Choose one</option><option>Electronics</option><option>Keys</option><option>Bags</option><option>Clothing</option><option>Cards &amp; IDs</option><option>Jewelry</option><option>Books</option><option>Other</option></select></label><label class="form-label">Date<span class="input-with-icon"><input name="itemDate" type="date" required /></span></label></div><label class="form-label">Where was it lost or found?<input name="location" required maxlength="120" placeholder="e.g. Student center, second floor" /></label><label class="form-label">A few helpful details<textarea name="description" rows="3" required maxlength="1200" placeholder="Color, brand, distinguishing details…"></textarea></label><label class="form-label">Contact email<input name="contactEmail" type="email" required maxlength="254" placeholder="you@example.com" /><small class="field-help">Visible to anyone who can view this post.</small></label><div class="form-error" id="listing-error" role="alert"></div><button class="button button-primary form-submit" id="listing-submit">Post to the board <span aria-hidden="true">↗</span></button></form></div></dialog>
+
+    <dialog class="modal" id="detail-modal" aria-labelledby="detail-title"><div class="modal-shell detail-shell"><button class="modal-close" data-close="detail-modal" aria-label="Close">×</button><div id="detail-content"></div></div></dialog>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <script src="/app.js" type="module"></script>
+  </body>
+</html>
